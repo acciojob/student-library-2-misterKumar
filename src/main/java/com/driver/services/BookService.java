@@ -20,6 +20,14 @@ public class BookService {
 
     public List<Book> getBooks(String genre, boolean available, String author){
         List<Book> books = null; //find the elements of the list by yourself
+        if(genre!=null && available==true && author==null)
+            return books=bookRepository2.findBooksByGenre(genre,available);
+        if(genre!=null && available==false && author!=null)
+            return books=bookRepository2.findBooksByGenreAuthor(genre,author,available);
+        if(genre==null && author==null)
+            return books=bookRepository2.findByAvailability(available);
+        if(genre==null && author==null)
+            return books=bookRepository2.findBooksByAuthor(author,available);
         return books;
     }
 }

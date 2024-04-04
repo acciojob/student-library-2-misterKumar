@@ -17,25 +17,26 @@ public class StudentService {
 
     public Student getDetailsByEmail(String email){
         Student student = null;
-
+        student=studentRepository4.findByEmailId(email);
         return student;
     }
 
     public Student getDetailsById(int id){
         Student student = null;
-
+        student=studentRepository4.findById(id).orElse(null);
         return student;
     }
 
     public void createStudent(Student student){
-
+        studentRepository4.save(student);
     }
 
     public void updateStudent(Student student){
-
+        studentRepository4.updateStudentDetails(student);
     }
 
     public void deleteStudent(int id){
         //Delete student and deactivate corresponding card
+        studentRepository4.deleteCustom(id);
     }
 }
